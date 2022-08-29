@@ -21,10 +21,10 @@ jobs:
           labels: "breaking, feature, fix, bug, removal, chore, dependency, question, skip"
 
       - name: Add PR to Draft Release Changelog
-        if: ${{ '{{' }} success() {{ '}}' }}
-        uses: release-drafter/release-drafter@v5.20.0
+        if: ${{ success() }}
+        uses: release-drafter/release-drafter@v5.20
         with:
           config-name: release-drafter.yml
           commitish: main
         env:
-          GITHUB_TOKEN: ${{ '{{' }} secrets.GITHUB_TOKEN {{ '}}' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,5 +1,5 @@
 <h1 align="center">Cookiecutter</h1>
-<p align="center">A modern template based on python best practices 🐍</p>
+<p align="center">A modern python template based on best practices 🐍</p>
 
 ## Overview
 

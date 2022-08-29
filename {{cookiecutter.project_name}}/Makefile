@@ -17,8 +17,8 @@ publish:
 
 {% endif -%}
 {% if cookiecutter.use_docs == "yes" -%}
-docs:
-	mkdocs serve
+doc:
+	poetry run mkdocs serve
 
 {% endif -%}
 requirements:

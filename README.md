@@ -6,7 +6,7 @@
 * [Make](https://www.gnu.org/software/make/) - build automation
 * [Poetry](https://python-poetry.org) - dependency management and packaging
 * [Pre-Commit](https://pre-commit.com) - git hooks
-* [Pytest](https://docs.pytest.org/en/stable/), [Pytest-Cov]() - testing and coverage reports
+* [Pytest](https://docs.pytest.org/en/stable/), [Pytest-Cov](https://pytest-cov.readthedocs.io/en/latest/) - testing and coverage reports
 * [FastAPI](https://fastapi.tiangolo.com/) - API
 * [Typer](https://typer.tiangolo.com/) - CLI
 * [Black](https://black.readthedocs.io/en/stable/), [Isort](https://pycqa.github.io/isort/) - code formatting

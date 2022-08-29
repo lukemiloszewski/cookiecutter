@@ -26,7 +26,7 @@ Changelog = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.
 fastapi = "^0.81.0"
 python-dotenv = "^0.20.0"
 requests = "^2.27.1"
-uvicorn = "^0.16.0"
+uvicorn = "^0.18.3"
 {% endif -%}
 {% if cookiecutter.use_cli == "yes" -%}
 typer = "^0.6.1"
@@ -35,7 +35,7 @@ python = ">=3.8.0,<3.11.0"
 
 [tool.poetry.dev-dependencies]
 black = {extras = ["jupyter"], version = "^22.6.0"}
-flake8 = "^4.0.0"
+flake8 = "^5.0.4"
 isort = "^5.10.0"
 ipykernel = "^6.15.1"
 ipython = "^8.4.0"

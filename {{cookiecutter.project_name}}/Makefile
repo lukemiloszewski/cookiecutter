@@ -16,6 +16,11 @@ publish:
 	poetry publish --build
 
 {% endif -%}
+{% if cookiecutter.use_docs == "yes" -%}
+docs:
+	mkdocs serve
+
+{% endif -%}
 requirements:
 	poetry export -f requirements.txt --output requirements.txt
 

@@ -45,6 +45,14 @@ if __name__ == "__main__":
         remove_file("src/{{cookiecutter.package_name}}/__main__.py")
         remove_file("tests/test_main.py")
 
+    if "{{ cookiecutter.use_docs }}" == "no":
+        remove_file("docs")
+        remove_file("mkdocs.yml")
+        remove_file(".github/workflows/deploy.yml")
+
+    if "{{ cookiecutter.use_auto_deploy }}" == "no":
+        remove_file(".github/workflows/deploy.yml")
+
     if "{{ cookiecutter.use_auto_publish }}" == "no":
         remove_file(".github/workflows/publish.yml")
 

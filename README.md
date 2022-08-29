@@ -9,6 +9,7 @@
 * [Pytest](https://docs.pytest.org/en/stable/), [Pytest-Cov](https://pytest-cov.readthedocs.io/en/latest/) - testing and coverage reports
 * [FastAPI](https://fastapi.tiangolo.com/) - API
 * [Typer](https://typer.tiangolo.com/) - CLI
+* [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - documentation
 * [Black](https://black.readthedocs.io/en/stable/), [Isort](https://pycqa.github.io/isort/) - code formatting
 * [Flake8](https://flake8.pycqa.org/en/latest/), [Mypy](https://mypy.readthedocs.io/en/stable/), [Pydocstyle](https://www.pydocstyle.org/en/stable/) - code linting
 * [GitHub Actions](https://docs.github.com/en/actions) - continuous integration and deployment
@@ -41,8 +42,10 @@ cookiecutter gh:lukemiloszewski/cookiecutter
 * `github_homepage` - GitHub homepage where the project is hosted
 * `author_name` - author name
 * `author_email` - author email
-* `use_api` - include template for an API
-* `use_cli` - include template for a CLI
-* `use_auto_publish` - include GitHub Action workflow for automatic publishing to PyPI
-* `use_github_actions` - include GitHub Action workflow for CI/CD
+* `use_api` - include template for API
+* `use_cli` - include template for CLI
+* `use_docs` - include template for documentation
+* `use_auto_deploy` - include workflow for automatic documentation deployment
+* `use_auto_publish` - include workflow for automatic package publishing
+* `use_github_actions` - include workflows for continuous integration
 * `use_git` - initialize git repository and make initial commit

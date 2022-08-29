@@ -1,0 +1,92 @@
+[tool.poetry]
+name = "{{cookiecutter.project_name}}"
+version = "{{cookiecutter.package_version}}"
+description = "{{cookiecutter.package_description}}"
+authors = ["{{cookiecutter.author_name}} <{{cookiecutter.author_email}}>"]
+license = "MIT"
+readme = "README.md"
+homepage = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}"
+repository = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}"
+{% if cookiecutter.package_name != cookiecutter.project_name.replace('-', '_') -%}
+packages = [
+    { include = "{{cookiecutter.package_name}}", from = "src" },
+]
+{% endif -%}
+classifiers = [
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+]
+
+[tool.poetry.urls]
+Changelog = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}/releases"
+
+[tool.poetry.dependencies]
+{% if cookiecutter.use_api == "yes" -%}
+fastapi = "^0.81.0"
+python-dotenv = "^0.20.0"
+requests = "^2.27.1"
+uvicorn = "^0.16.0"
+{% endif -%}
+{% if cookiecutter.use_cli == "yes" -%}
+typer = "^0.6.1"
+{% endif -%}
+python = ">=3.8.0,<3.11.0"
+
+[tool.poetry.dev-dependencies]
+black = {extras = ["jupyter"], version = "^22.6.0"}
+flake8 = "^4.0.0"
+isort = "^5.10.0"
+ipykernel = "^6.15.1"
+ipython = "^8.4.0"
+mypy = "^0.971"
+pre-commit = "^2.17.0"
+pydocstyle = "^6.1.1"
+pytest = "^7.0.0"
+pytest-asyncio = "^0.19.0"
+pytest-cov = "^3.0.0"
+rich = "^12.5.1"
+typeguard = "^2.13.3"
+
+{% if cookiecutter.use_cli == "yes" -%}
+[tool.poetry.scripts]
+{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.__main__:main"
+{% endif -%}
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+strict = true
+warn_return_any = false
+show_column_numbers = true
+show_error_codes = true
+
+[tool.pydocstyle]
+convention = "google"
+add_ignore = ["D100","D104", "D105", "D106", "D107"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 100
+lines_after_imports = 2
+
+[tool.black]
+line-length = 100
+
+[tool.coverage.paths]
+source = ["src"]
+tests = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["{{cookiecutter.package_name}}"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 100
+omit = [
+  "*/*init*",
+]

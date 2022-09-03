@@ -9,8 +9,10 @@ PROJECT_DIRECTORY = pathlib.Path(os.path.realpath(os.path.curdir))
 
 
 def remove_file(filepath):
-    full_path = PROJECT_DIRECTORY / filepath
-    if (full_path.is_file()):
+    full_path: pathlib.Path = PROJECT_DIRECTORY / filepath
+    if not full_path.exists():
+        pass
+    elif full_path.is_file():
         os.remove(full_path)
     else:
         shutil.rmtree(full_path)

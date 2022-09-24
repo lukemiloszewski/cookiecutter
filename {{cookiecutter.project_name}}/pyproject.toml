@@ -54,8 +54,8 @@ typeguard = "^2.13.3"
 {% if cookiecutter.use_cli == "yes" -%}
 [tool.poetry.scripts]
 {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.__main__:main"
-{% endif -%}
 
+{% endif -%}
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"

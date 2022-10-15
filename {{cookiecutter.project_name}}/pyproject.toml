@@ -33,13 +33,14 @@ typer = "^0.6.1"
 {% endif -%}
 python = ">=3.8.0,<3.11.0"
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
+bandit = {extras = ["toml"], version = "^1.7.4"}
 black = {extras = ["jupyter"], version = "^22.6.0"}
 flake8 = "^5.0.4"
 isort = "^5.10.0"
 ipykernel = "^6.15.1"
 ipython = "^8.4.0"
-{% if cookiecutter.use_cli == "yes" -%}
+{% if cookiecutter.use_docs == "yes" -%}
 mkdocs-material = "^8.4.2"
 {% endif -%}
 mypy = "^0.971"
@@ -49,6 +50,7 @@ pytest = "^7.0.0"
 pytest-asyncio = "^0.19.0"
 pytest-cov = "^3.0.0"
 rich = "^12.5.1"
+safety = "^2.3.1"
 typeguard = "^2.13.3"
 
 {% if cookiecutter.use_cli == "yes" -%}
@@ -93,3 +95,6 @@ fail_under = 100
 omit = [
   "*/*init*",
 ]
+
+[tool.bandit]
+exclude_dirs = ["tests"]

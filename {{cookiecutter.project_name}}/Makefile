@@ -39,6 +39,12 @@ isort:
 black:
 	poetry run black src tests
 
+safety:
+	poetry export -f requirements.txt --with dev --without-hashes | safety check --stdin
+
+bandit:
+	poetry run bandit -r src
+
 lint: flake8 mypy pydocstyle
 
 format: isort black

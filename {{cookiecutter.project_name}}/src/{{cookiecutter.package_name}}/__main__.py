@@ -1,13 +1,4 @@
-import typer
+from {{cookiecutter.package_name}}.main import app
 
 
-app = typer.Typer()
-
-
-@app.command()
-def main() -> None:
-    """{{cookiecutter.package_name}}."""
-
-
-if __name__ == "__main__":
-    app(prog_name="{{cookiecutter.project_name}}")  # pragma: no cover
+app(prog_name="{{cookiecutter.package_name}}")  # pragma: no cover

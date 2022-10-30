@@ -1,8 +1,8 @@
 from typer.testing import CliRunner
 
-from {{cookiecutter.package_name}} import __main__
+from {{cookiecutter.package_name}} import main
 
 
 def test_main_runs(runner: CliRunner) -> None:
-    result = runner.invoke(__main__.app)
+    result = runner.invoke(main.app)
     assert result.exit_code == 0

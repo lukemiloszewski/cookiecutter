@@ -55,7 +55,7 @@ typeguard = "^2.13.3"
 
 {% if cookiecutter.use_cli == "yes" -%}
 [tool.poetry.scripts]
-{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.__main__:app"
+{{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.main:app"
 
 {% endif -%}
 [build-system]

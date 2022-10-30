@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 import os
+import pathlib
 import shutil
 import subprocess
-import pathlib
-
 
 PROJECT_DIRECTORY = pathlib.Path(os.path.realpath(os.path.curdir))
 
@@ -45,6 +44,7 @@ if __name__ == "__main__":
 
     if "{{ cookiecutter.use_cli }}" == "no":
         remove_file("src/{{cookiecutter.package_name}}/__main__.py")
+        remove_file("src/{{cookiecutter.package_name}}/main.py")
         remove_file("tests/test_main.py")
 
     if "{{ cookiecutter.use_docs }}" == "no":

@@ -7,53 +7,31 @@ license = "MIT"
 readme = "README.md"
 homepage = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}"
 repository = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}"
-{% if cookiecutter.package_name != cookiecutter.project_name.replace('-', '_') -%}
 packages = [
     { include = "{{cookiecutter.package_name}}", from = "src" },
 ]
-{% endif -%}
 classifiers = [
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.12",
 ]
 
 [tool.poetry.urls]
 Changelog = "https://github.com/{{cookiecutter.github_homepage}}/{{cookiecutter.project_name}}/releases"
 
 [tool.poetry.dependencies]
-{% if cookiecutter.use_api == "yes" -%}
-fastapi = "^0.81.0"
-python-dotenv = "^0.20.0"
-requests = "^2.27.1"
-uvicorn = "^0.18.3"
-{% endif -%}
-{% if cookiecutter.use_cli == "yes" -%}
 typer = "^0.6.1"
-{% endif -%}
-python = ">=3.8.0,<3.11.0"
+python = ">=3.12.0,<3.13.0"
 
 [tool.poetry.group.dev.dependencies]
-bandit = {extras = ["toml"], version = "^1.7.4"}
-black = {extras = ["jupyter"], version = "^22.6.0"}
-flake8 = "^5.0.4"
-isort = "^5.10.0"
-ipykernel = "^6.15.1"
-ipython = "^8.4.0"
 {% if cookiecutter.use_docs == "yes" -%}
 mkdocs-material = "^8.4.2"
 {% endif -%}
 mypy = "^0.971"
-pre-commit = "^2.17.0"
-pydocstyle = "^6.1.1"
 pytest = "^7.0.0"
 pytest-asyncio = "^0.19.0"
 pytest-cov = "^3.0.0"
-rich = "^12.5.1"
-safety = "^2.3.1"
+ruff = "^0.1.8"
 typeguard = "^2.13.3"
 
-{% if cookiecutter.use_cli == "yes" -%}
 [tool.poetry.scripts]
 {{cookiecutter.project_name}} = "{{cookiecutter.package_name}}.main:app"
 
@@ -72,14 +50,20 @@ show_error_codes = true
 convention = "google"
 add_ignore = ["D100","D104", "D105", "D106", "D107"]
 
-[tool.isort]
-profile = "black"
-multi_line_output = 3
-line_length = 100
-lines_after_imports = 2
-
-[tool.black]
+[tool.ruff]
 line-length = 100
+lint.select = [
+    "D",   # pydocstyle
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "UP",  # pyupgrade
+]
+
+[tool.ruff.lint.isort]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]
+known-first-party = ["{{cookiecutter.package_name}}"]
 
 [tool.coverage.paths]
 source = ["src"]
@@ -95,6 +79,3 @@ fail_under = 100
 omit = [
   "*/*init*",
 ]
-
-[tool.bandit]
-exclude_dirs = ["tests"]

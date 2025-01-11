@@ -6,11 +6,6 @@
   "github_homepage": "lukemiloszewski",
   "author_name": "Luke Miloszewski",
   "author_email": "lukemiloszewski@gmail.com",
-  "use_api": ["yes", "no"],
-  "use_cli": ["yes", "no"],
   "use_docs": ["yes", "no"],
-  "use_auto_deploy": ["yes", "no"],
-  "use_auto_publish": ["yes", "no"],
-  "use_github_actions": ["yes", "no"],
-  "use_git": ["yes", "no"]
+  "use_github_actions": ["yes", "no"]
 }

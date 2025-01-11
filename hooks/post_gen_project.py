@@ -2,7 +2,6 @@
 import os
 import pathlib
 import shutil
-import subprocess
 
 PROJECT_DIRECTORY = pathlib.Path(os.path.realpath(os.path.curdir))
 
@@ -17,55 +16,11 @@ def remove_file(filepath):
         shutil.rmtree(full_path)
 
 
-def rename_file(old, new):
-    old_path = PROJECT_DIRECTORY / old
-    new_path = PROJECT_DIRECTORY / new
-    os.rename(old_path, new_path)
-
-
 if __name__ == "__main__":
-    if "{{ cookiecutter.use_api }}" == "no":
-        remove_file("src/{{cookiecutter.package_name}}/routers")
-        remove_file("src/{{cookiecutter.package_name}}/app.py")
-        remove_file("src/{{cookiecutter.package_name}}/bootstrap.py")
-        remove_file("src/{{cookiecutter.package_name}}/config.py")
-        remove_file("src/{{cookiecutter.package_name}}/context.py")
-        remove_file("src/{{cookiecutter.package_name}}/dependencies.py")
-        remove_file("src/{{cookiecutter.package_name}}/logging.py")
-        remove_file("src/{{cookiecutter.package_name}}/middleware.py")
-        remove_file("tests/routers")
-        remove_file("tests/test_bootstrap.py")
-        remove_file("tests/test_context.py")
-        remove_file("tests/test_dependencies.py")
-        remove_file("tests/test_middleware.py")
-        remove_file("scripts")
-    else:
-        remove_file("src/{{cookiecutter.package_name}}/py.typed")
-
-    if "{{ cookiecutter.use_cli }}" == "no":
-        remove_file("src/{{cookiecutter.package_name}}/__main__.py")
-        remove_file("src/{{cookiecutter.package_name}}/main.py")
-        remove_file("tests/test_main.py")
-
     if "{{ cookiecutter.use_docs }}" == "no":
         remove_file("docs")
         remove_file("mkdocs.yml")
-        remove_file(".github/workflows/deploy.yml")
-
-    if "{{ cookiecutter.use_auto_deploy }}" == "no":
-        remove_file(".github/workflows/deploy.yml")
-
-    if "{{ cookiecutter.use_auto_publish }}" == "no":
-        remove_file(".github/workflows/publish.yml")
+        remove_file(".github/workflows/deploy_docs.yml")
 
     if "{{ cookiecutter.use_github_actions }}" == "no":
         remove_file(".github")
-
-    subprocess.call(['git', 'init'])
-    subprocess.call(['make', 'init'])
-    subprocess.call(['make', 'format'])
-
-    if "{{ cookiecutter.use_git }}" == "yes":
-        subprocess.call(['git', 'add', '*'])
-        subprocess.call(['git', 'commit', '-m', 'Initial commit', '--no-verify'])
-        subprocess.call(['git', 'branch', '-m', 'main'])

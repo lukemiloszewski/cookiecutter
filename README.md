@@ -5,19 +5,17 @@
 
 * [Make](https://www.gnu.org/software/make/) - build automation
 * [Poetry](https://python-poetry.org) - dependency management and packaging
-* [Pre-Commit](https://pre-commit.com) - git hooks
 * [Pytest](https://docs.pytest.org/en/stable/), [Pytest-Cov](https://pytest-cov.readthedocs.io/en/latest/) - testing and coverage reports
-* [FastAPI](https://fastapi.tiangolo.com/) - API
 * [Typer](https://typer.tiangolo.com/) - CLI
 * [Material for MkDocs](https://squidfunk.github.io/mkdocs-material/) - documentation
-* [Black](https://black.readthedocs.io/en/stable/), [Isort](https://pycqa.github.io/isort/) - code formatting
-* [Flake8](https://flake8.pycqa.org/en/latest/), [Mypy](https://mypy.readthedocs.io/en/stable/), [Pydocstyle](https://www.pydocstyle.org/en/stable/) - code linting
+* [Ruff](https://docs.astral.sh/ruff/) - code formatting
+* [Mypy](https://mypy.readthedocs.io/en/stable/), [Typeguard](https://github.com/agronholm/typeguard) - type checking
 * [GitHub Actions](https://docs.github.com/en/actions) - continuous integration and deployment
 * [Dependabot](https://docs.github.com/en/code-security/dependabot) - automated dependency updates
 * [GitHub Labeler](https://github.com/marketplace/actions/github-labeler) - automated label management
 * [Release Drafter](https://github.com/marketplace/actions/release-drafter) - automated release notes
 
-This template supports Python 3.8.x, 3.9.x and 3.10.x.
+This template supports Python 3.12.x.
 
 ## Usage
 
@@ -42,10 +40,5 @@ cookiecutter gh:lukemiloszewski/cookiecutter
 * `github_homepage` - GitHub homepage where the project is hosted
 * `author_name` - author name
 * `author_email` - author email
-* `use_api` - include template for API
-* `use_cli` - include template for CLI
 * `use_docs` - include template for documentation
-* `use_auto_deploy` - include workflow for automatic documentation deployment
-* `use_auto_publish` - include workflow for automatic package publishing
 * `use_github_actions` - include workflows for continuous integration
-* `use_git` - initialize git repository and make initial commit

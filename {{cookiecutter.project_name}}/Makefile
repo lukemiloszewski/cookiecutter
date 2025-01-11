@@ -1,17 +1,10 @@
 init:
 	poetry config virtualenvs.in-project true
-	poetry install
-	poetry run pre-commit install --hook-type pre-commit --install-hooks
+	poetry install --all-extras --sync
 
 test:
 	poetry run pytest tests -v --cov
 
-{% if cookiecutter.use_api == "yes" -%}
-app:
-	poetry run python scripts/main.py
-
-{% endif -%}
-{% if cookiecutter.use_auto_publish == "yes" -%}
 publish:
 	poetry publish --build
 
@@ -24,30 +17,12 @@ doc:
 requirements:
 	poetry export -f requirements.txt --output requirements.txt
 
-flake8:
-	poetry run flake8 src tests
-
-mypy:
+lint:
 	poetry run mypy src tests
-
-pydocstyle:
 	poetry run pydocstyle src
+	poetry run ruff check src tests
+	poetry run ruff format src tests --check
 
-isort:
-	poetry run isort src tests
-
-black:
-	poetry run black src tests
-
-safety:
-	poetry export -f requirements.txt --with dev --without-hashes | safety check --stdin
-
-bandit:
-	poetry run bandit -r src
-
-lint: flake8 mypy pydocstyle
-
-format: isort black
-
-pre-commit:
-	poetry run pre-commit run --all-files --color=always
+format:
+	poetry run ruff check src tests --fix
+	poetry run ruff format src tests
